@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universo Antonia 💫</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Estilos propios -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+
+    <!-- Barra de progreso -->
+    <div id="progress-bar"></div>
+
+    <!-- Canvas para el espacio 3D -->
+    <div id="canvas-container"></div>
+
+    <!-- Contenedor principal de scroll -->
+    <div id="space-container">
+        <div id="scroll-content">
+            <!-- Mensajes distribuidos a lo largo del viaje espacial -->
+            <div class="space-message" style="left: 10%; top: 30%;">Hola, hermosa... 🌟</div>
+            <div class="space-message" style="left: 20%; top: 60%;">Estás a punto de emprender un viaje... 🚀</div>
+            <div class="space-message" style="left: 30%; top: 25%;">A través de mi universo... ✨</div>
+            <div class="space-message" style="left: 40%; top: 70%;">Donde cada estrella... 💫</div>
+            <div class="space-message" style="left: 50%; top: 40%;">Es un pensamiento de amor para ti... 💕</div>
+            <div class="space-message" style="left: 60%; top: 20%;">Eres mi luz en la oscuridad... 🌌</div>
+            <div class="space-message" style="left: 70%; top: 65%;">Mi razón para soñar despierto... 💭</div>
+            <div class="space-message" style="left: 80%; top: 35%;">La dueña de cada latido de mi corazón... 💗</div>
+            <div class="space-message" style="left: 90%; top: 50%;">Prepárate para lo que viene... 🌠</div>
+            <div class="space-message" style="left: 95%; top: 45%;">Una explosión de amor inmenso... 💥</div>
+        </div>
+    </div>
+
+    <!-- Indicador de scroll -->
+    <div id="scroll-hint" class="space-font text-white/80">
+        <div class="text-sm mb-2">Desliza para viajar por el espacio</div>
+        <div class="text-3xl">→</div>
+    </div>
+
+    <!-- Contador de distancia -->
+    <div id="distance-counter" class="fixed top-8 left-8 z-50 space-font text-xl text-pink-300">
+        Distancia: <span id="km">0</span> km
+    </div>
+
+    <!-- Supernova -->
+    <div id="supernova-container">
+        <canvas id="supernova-canvas"></canvas>
+    </div>
+
+    <!-- Corazón gigante formado por partículas -->
+    <div id="giant-heart"></div>
+
+    <!-- Botón central -->
+    <button id="center-button">💖 TÓCAME 💖</button>
+
+    <!-- Mensaje especial -->
+    <div id="special-message">
+        <h2 class="handwritten text-4xl md:text-5xl mb-8 text-pink-300">Amorcito...</h2>
+        <p class="text-lg md:text-xl leading-relaxed mb-6 text-gray-100">
+            En estos 5 meses me has hecho el hombre más feliz. No tienes idea. Estas páginas, que a veces son horas, incluso días, porque las hago poquito a poquito, son solo para ti. Me esfuerzo por ti. No me importa dormir tarde o directamente no dormir si eso hace que te salga una sonrisa. Créeme que no miento cuando digo que te amo y me encantas mucho.
+        </p>
+        <div class="text-5xl mt-8 animate-bounce">💕</div>
+        <button onclick="showFinalPage()" class="mt-8 bg-pink-500 hover:bg-pink-600 text-white px-8 py-3 rounded-full font-bold transition-all transform hover:scale-110">
+            Continuar nuestra historia ✨
+        </button>
+    </div>
+
+    <!-- Página final -->
+    <div id="final-page">
+        <div class="min-h-screen flex flex-col items-center justify-center p-8 text-center">
+            <h1 class="handwritten text-6xl md:text-8xl mb-8 text-white drop-shadow-2xl">
+                Felices 5 Meses, Antonia 💕
+            </h1>
+            
+            <div class="max-w-4xl mx-auto space-y-8 text-xl md:text-2xl leading-relaxed">
+                <p class="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20">
+                    Mi <span class="text-pink-300 font-bold handwritten text-3xl">edmosa</span>, 
+                    mi <span class="text-purple-300 font-bold handwritten text-3xl">pelfecta</span>, 
+                    mi <span class="text-yellow-300 font-bold handwritten text-3xl">tiamo</span> eterno... 
+                </p>
+                
+                <p class="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20">
+                    Eres lo más hermoso que me ha pasado. Cada día a tu lado es un regalo del universo. 
+                    Gracias por estos 5 meses de pura felicidad. 🌟
+                </p>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
+                    <div class="bg-white/20 rounded-2xl p-6 backdrop-blur-sm">
+                        <div class="text-4xl font-bold text-pink-300">5</div>
+                        <div class="text-sm">Meses</div>
+                    </div>
+                    <div class="bg-white/20 rounded-2xl p-6 backdrop-blur-sm">
+                        <div class="text-4xl font-bold text-purple-300">152</div>
+                        <div class="text-sm">Días</div>
+                    </div>
+                    <div class="bg-white/20 rounded-2xl p-6 backdrop-blur-sm">
+                        <div class="text-4xl font-bold text-yellow-300">∞</div>
+                        <div class="text-sm">Amor</div>
+                    </div>
+                    <div class="bg-white/20 rounded-2xl p-6 backdrop-blur-sm">
+                        <div class="text-4xl font-bold text-pink-300">1</div>
+                        <div class="text-sm">Tú & Yo</div>
+                    </div>
+                </div>
+                
+                <div class="mt-12 text-6xl animate-pulse">💖💕💗💘💝</div>
+                
+                <p class="handwritten text-4xl mt-8 text-pink-200">
+                    Te amo hasta el infinito y más allá... ✨
+                </p>
+            </div>
+            
+            <button onclick="location.reload()" class="mt-12 bg-white text-pink-600 px-8 py-4 rounded-full font-bold text-xl hover:scale-110 transition-transform shadow-2xl">
+                🚀 Viajar de nuevo por el espacio
+            </button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="space.js"></script>
+    <script src="messages.js"></script>
+    <script src="supernova.js"></script>
+    <script src="interactions.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+📁 proyecto-antonia/
+├── 📄 index.html          (Estructura principal)
+├── 📄 styles.css          (Estilos y diseño visual)
+├── 📄 space.js            (Animación del espacio 3D con Three.js)
+├── 📄 messages.js         (Mensajes flotantes y scroll)
+├── 📄 supernova.js        (Efecto de supernova y corazón)
+├── 📄 interactions.js     (Interacciones del usuario)
+└── 📄 animations.css      (Animaciones keyframes adicionales)

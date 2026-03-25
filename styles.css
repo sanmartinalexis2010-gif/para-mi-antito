@@ -1,0 +1,236 @@
+/* Reset y configuración base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+    background: #000;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Fuentes personalizadas */
+.space-font {
+    font-family: 'Orbitron', sans-serif;
+}
+
+.handwritten {
+    font-family: 'Dancing Script', cursive;
+}
+
+/* Scroll horizontal container */
+#space-container {
+    width: 100vw;
+    height: 100vh;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    scrollbar-width: none;
+    cursor: grab;
+}
+
+#space-container::-webkit-scrollbar {
+    display: none;
+}
+
+#space-container:active {
+    cursor: grabbing;
+}
+
+/* Canvas 3D */
+#canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* Scroll content */
+#scroll-content {
+    width: 800vw;
+    height: 100vh;
+    position: relative;
+    z-index: 10;
+}
+
+/* Mensajes flotantes */
+.space-message {
+    position: absolute;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 0 0 20px currentColor;
+    white-space: nowrap;
+    opacity: 0;
+    transform: scale(0);
+    pointer-events: none;
+    background: linear-gradient(45deg, #ff69b4, #ff1493, #ffb6c1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 30px rgba(255, 105, 180, 0.8));
+}
+
+.space-message.visible {
+    opacity: 1;
+    transform: scale(1);
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Indicador de scroll */
+#scroll-hint {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    text-align: center;
+    animation: pulse 2s infinite;
+}
+
+/* Supernova container */
+#supernova-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0;
+}
+
+/* Corazón gigante formado por partículas */
+#giant-heart {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    z-index: 60;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.heart-particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, #ff69b4, #ff1493);
+    border-radius: 50%;
+    box-shadow: 0 0 20px #ff69b4;
+}
+
+/* Botón central */
+#center-button {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 70;
+    padding: 30px 60px;
+    font-size: 2rem;
+    background: radial-gradient(circle, #ff69b4, #ff1493);
+    border: 3px solid white;
+    border-radius: 50px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 
+        0 0 60px rgba(255, 105, 180, 0.8),
+        inset 0 0 30px rgba(255, 255, 255, 0.3);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+    pointer-events: none;
+}
+
+#center-button.visible {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: all;
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+#center-button:hover {
+    transform: translate(-50%, -50%) scale(1.2);
+    box-shadow: 0 0 100px rgba(255, 105, 180, 1);
+}
+
+/* Página final */
+#final-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    z-index: 80;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.9);
+    transition: all 1s ease;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #ffdde1 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+}
+
+#final-page.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: scale(1);
+}
+
+/* Mensaje especial */
+#special-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 800px;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(20px);
+    padding: 50px;
+    border-radius: 30px;
+    border: 2px solid rgba(255, 105, 180, 0.5);
+    z-index: 90;
+    opacity: 0;
+    pointer-events: none;
+    text-align: center;
+    box-shadow: 0 0 100px rgba(255, 105, 180, 0.5);
+}
+
+#special-message.visible {
+    opacity: 1;
+    pointer-events: all;
+    animation: fadeInUp 1s ease;
+}
+
+/* Barra de progreso */
+#progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #ff69b4, #ff1493);
+    z-index: 100;
+    width: 0%;
+    transition: width 0.1s;
+    box-shadow: 0 0 20px #ff69b4;
+}
+
+/* Utilidades de Tailwind personalizadas */
+.backdrop-blur-md {
+    backdrop-filter: blur(12px);
+}
+
+.backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+}
